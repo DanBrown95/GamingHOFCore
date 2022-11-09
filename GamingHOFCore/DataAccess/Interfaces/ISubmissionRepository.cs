@@ -8,5 +8,7 @@ namespace GamingHOFCore.DataAccess.Interfaces
     {
         Task<IEnumerable<Submission>> GetAllAsync();
         Task<IEnumerable<Submission>> GetAllByPlatformAsync(string platform);
+        Task<IEnumerable<Submission>> GetAllIncludingCreatorAsync();
+        Task<Submission> GetByIdAsync(string id);
     }
 }

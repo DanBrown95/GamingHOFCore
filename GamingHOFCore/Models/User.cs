@@ -10,5 +10,9 @@ namespace GamingHOFCore.Models
         public string Lastname { get; set; }
         public bool IsActive { get; set; }
         public DateTime ActiveBanDate { get; set; }
+
+
+        //computed properties
+        public string Fullname { get { return Firstname + " " + Lastname; } }
     }
 }

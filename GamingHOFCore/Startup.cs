@@ -19,6 +19,8 @@ namespace GamingHOFCore
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +31,15 @@ namespace GamingHOFCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:8080").WithHeaders("Authorization", "Content-Type");
+                    });
+            });
+
             services.AddSingleton<ConnectionFactory>();
             services.AddScoped<ISubmissionRepository, SubmissionRepository>();
 
@@ -43,6 +54,7 @@ namespace GamingHOFCore
         {
             if (env.IsDevelopment())
             {
+                app.UseCors(MyAllowSpecificOrigins);
                 app.UseDeveloperExceptionPage();
             }
 

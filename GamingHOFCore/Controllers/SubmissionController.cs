@@ -28,6 +28,20 @@ namespace GamingHOFCore.Controllers
             return submissions;
         }
 
+        [HttpPost]
+        public async Task<Submission> GetById([FromBody] string id)
+        {
+            var submission = await _submissionRepo.GetByIdAsync(id);
+            return submission;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<Submission>> GetAllIncludingCreatorAsync()
+        {
+            var submissions = await _submissionRepo.GetAllIncludingCreatorAsync();
+            return submissions;
+        }
+
         public async Task<IEnumerable<Submission>> GetAllByPlatformAsync(string platform)
         {
             var submissions = await _submissionRepo.GetAllByPlatformAsync(platform);
