@@ -42,6 +42,7 @@ namespace GamingHOFCore
 
             services.AddSingleton<ConnectionFactory>();
             services.AddScoped<ISubmissionRepository, SubmissionRepository>();
+            services.AddScoped<ICreatorRepository, CreatorRepository>();
 
 
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)

@@ -6,13 +6,8 @@ namespace GamingHOFCore.Models
     {
         public string Id { get; set; }
         public string Email { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string Gamertag { get; set; }
         public bool IsActive { get; set; }
         public DateTime ActiveBanDate { get; set; }
-
-
-        //computed properties
-        public string Fullname { get { return Firstname + " " + Lastname; } }
     }
 }
